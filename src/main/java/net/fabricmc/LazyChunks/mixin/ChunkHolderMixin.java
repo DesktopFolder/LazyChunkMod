@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ChunkHolderMixin {
 //	@Inject(at = @At("HEAD"), method = "tick", cancellable = true)
 //	private void tick(CallbackInfo info) {
-//		if (LazyChunkMod.itickFrozen)
+//		if (lazychunks.itickFrozen)
 //		{
 //			info.cancel();
 //		}

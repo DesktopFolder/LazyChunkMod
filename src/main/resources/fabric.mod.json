@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "LazyChunkMod",
+  "id": "lazychunks",
   "version": "${version}",
 
   "name": "Lazy Chunk Mod",
@@ -23,7 +23,7 @@
     ]
   },
   "mixins": [
-    "LazyChunkMod.mixins.json"
+    "lazychunks.mixins.json"
   ],
 
   "depends": {

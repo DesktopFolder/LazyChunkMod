@@ -17,7 +17,7 @@ public class LazyChunkMod implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger("LazyChunkMod");
+	public static final Logger LOGGER = LoggerFactory.getLogger("lazychunks");
 	public static boolean itickFrozen = false;
 
 	public static void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, Commands.CommandSelection arg) {
@@ -43,7 +43,7 @@ public class LazyChunkMod implements ModInitializer {
 			LOGGER.info("Invalid source. Your game will now crash. Try harder next time.");
 		}
 		LOGGER.info(source.getDisplayName().getString());
-		var str = itickFrozen ? "gi Game is frozen. You may now break the bedrock." : "gi Game is not frozen. You should turn off the heat.";
+		var str = itickFrozen ? "Game is frozen. You may now break the bedrock." : "Game is not frozen. You should turn off the heat.";
 		source.sendSuccess(new TextComponent(str).withStyle(Style.EMPTY.withItalic(true).withColor(ChatFormatting.GRAY)), false);
 		return 0 /* Toto - "This is the amount of 'something' that gets executed." Read: Not a way to subtly mess with people. For shame.*/;
 	}
