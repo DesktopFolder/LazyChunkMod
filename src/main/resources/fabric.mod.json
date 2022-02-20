@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "LazyChunkMod",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Lazy Chunk Mod",
+  "description": "A mod for simulating/debugging lazy chunks.",
   "authors": [
-    "Me!"
+    "DesktopFolder",
+    "Totorewa"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/DesktopFolder/LazyChunkMod"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/LazyChunkMod/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.fabricmc.LazyChunks.LazyChunkMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "LazyChunkMod.mixins.json"
   ],
 
   "depends": {
