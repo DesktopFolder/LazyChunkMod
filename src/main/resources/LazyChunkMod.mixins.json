@@ -7,7 +7,8 @@
   ],
   "client": [
     "ChunkHolderMixin",
-    "CommandsMixin"
+    "CommandsMixin",
+    "ItemEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
