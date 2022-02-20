@@ -25,32 +25,34 @@ public abstract class ItemEntityMixin extends Entity {
 
 	@Shadow private int age;
 	@Shadow public final float bobOffs;
-	protected int bonusAge = -1;
+	// This is the age we use for all animations (called by render thread & getSpin)
+	// This allows us to keep the lazy chunk mechanisms during itick freeze (i.e. item doesn't despawn or progress
+	// towards despawning) while simultaneously having perfect rendering (i.e. item never jitters/jumps)
+	protected int animationAge = 0;
 
 	@Inject(at = @At("HEAD"), method = "tick", cancellable = true)
 	private void tick(CallbackInfo info) {
+		this.animationAge++;
 		if (LazyChunkMod.itickFrozen)
 		{
-			// Let's just make this look super smooth.
-			if (this.bonusAge == -1)
-			{
-				this.bonusAge = this.age;
-			}
-			else {
-				++this.bonusAge;
-			}
-			super.tick();
+			// super.tick();
 			info.cancel();
 		}
-		else if (this.bonusAge != -1) this.bonusAge = -1; // kinda ugly but it works :^)
 	}
 
-	@Inject(at = @At("HEAD"), method = "getSpin", cancellable = true)
-	private void getSpin(float f, CallbackInfoReturnable<Float> cir) {
-		if (LazyChunkMod.itickFrozen)
-		{
-			float spin = ((float)this.bonusAge + f) / 20.0f + this.bobOffs;
-			cir.setReturnValue(spin);
-		}
+	// Original workaround to keep item entity spinning.
+	// But now we just replace the return value for getAge(). Leaving this for now just in case.
+//	@Inject(at = @At("HEAD"), method = "getSpin", cancellable = true)
+//	private void getSpin(float f, CallbackInfoReturnable<Float> cir) {
+//		if (LazyChunkMod.itickFrozen)
+//		{
+//			float spin = ((float)this.bonusAge + f) / 20.0f + this.bobOffs;
+//			cir.setReturnValue(spin);
+//		}
+//	}
+
+	@Inject(at = @At("HEAD"), method = "getAge", cancellable = true)
+	private void getAge(CallbackInfoReturnable<Integer> cir) {
+		cir.setReturnValue(this.animationAge);
 	}
 }
