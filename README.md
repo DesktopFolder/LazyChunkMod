@@ -2,4 +2,5 @@
 
 For simulating and debugging lazy chunks.
 
-Currently only provides `itick freeze` for preventing items from ticking. If you want a jar, build it yourself.
+Current feature(s):
+- `itick freeze` - freezes/unfreezes item ticking. Keeps video creation in mind, so this doesn't break animations (no jittering/glitchy animations like with `tick freeze`). Prevents the player from picking up items.

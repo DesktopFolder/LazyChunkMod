@@ -40,6 +40,14 @@ public abstract class ItemEntityMixin extends Entity {
 		}
 	}
 
+	@Inject(at = @At("HEAD"), method = "playerTouch", cancellable = true)
+	private void playerTouch(CallbackInfo info) {
+		if (LazyChunkMod.itickFrozen)
+		{
+			info.cancel();
+		}
+	}
+
 	// Original workaround to keep item entity spinning.
 	// But now we just replace the return value for getAge(). Leaving this for now just in case.
 //	@Inject(at = @At("HEAD"), method = "getSpin", cancellable = true)
